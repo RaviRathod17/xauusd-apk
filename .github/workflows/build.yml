@@ -9,13 +9,13 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Build APK with official Buildozer
+      - name: Build APK
         run: |
           docker run --rm \
-            --entrypoint bash \
             -v $PWD:/home/user/hostcwd \
-            kivy/buildozer:latest \
-            -c "yes | sdkmanager --licenses > /dev/null && buildozer android debug"
+            -v $HOME/.buildozer:/home/user/.buildozer \
+            ghcr.io/kivy/buildozer:latest \
+            android debug
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
