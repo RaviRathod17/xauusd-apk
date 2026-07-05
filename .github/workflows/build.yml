@@ -12,10 +12,11 @@ jobs:
       - name: Build APK
         run: |
           docker run --rm \
+            --entrypoint bash \
             -v $PWD:/home/user/hostcwd \
             -v $HOME/.buildozer:/home/user/.buildozer \
             ghcr.io/kivy/buildozer:latest \
-            android debug
+            -c "yes | /opt/android/android-sdk/cmdline-tools/latest/bin/sdkmanager --licenses > /dev/null && buildozer android debug"
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
