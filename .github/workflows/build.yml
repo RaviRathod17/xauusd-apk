@@ -2,20 +2,13 @@ name: Build APK
 on:
   push:
     branches: [ main ]
-
 jobs:
   build:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
-
       - name: Build APK with official Buildozer
-        run: |
-          docker run --rm \
-            -v $PWD:/home/user/hostcwd \
-            kivy/buildozer:latest \
-            buildozer android debug
-
+        run: docker run --rm -v $PWD:/home/user/hostcwd kivy/buildozer:latest android debug
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
