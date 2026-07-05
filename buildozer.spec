@@ -14,8 +14,8 @@ warn_on_root = 1
 
 # android
 android.permissions = INTERNET
-android.api = 31
+android.api = 30
 android.minapi = 21
-android.ndk = 25b
-android.build_tools = 33.0.2
+android.ndk = 23b
+android.build_tools = 33.0.3
 android.accept_sdk_license = True
